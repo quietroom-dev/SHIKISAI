@@ -1068,6 +1068,38 @@ function shuffle(array) {
 
 }
 
+function randomTargetColor() {
+
+  const undiscovered =
+    COLORS.filter(
+      color =>
+        !state.discovered.has(color.name)
+    );
+
+  // 未登録色があれば80%の確率で未登録色を出す
+  if (
+    undiscovered.length > 0 &&
+    Math.random() < 0.8
+  ) {
+
+    return undiscovered[
+      Math.floor(
+        Math.random() *
+        undiscovered.length
+      )
+    ];
+
+  }
+
+  // 残り20%は全色から出す
+  return COLORS[
+    Math.floor(
+      Math.random() *
+      COLORS.length
+    )
+  ];
+
+}
 
 function colorById(id) {
 
@@ -1218,14 +1250,7 @@ function colorDistance(a, b) {
 
 function createShikibetsuQuestion() {
 
-  const target =
-    COLORS[
-      Math.floor(
-        Math.random() *
-        COLORS.length
-      )
-    ];
-
+  const target = randomTargetColor();
 
   const otherFamilies =
     [
@@ -1343,13 +1368,7 @@ function createKanshikiQuestion() {
     groups[targetFamily];
 
 
-  const target =
-    familyColors[
-      Math.floor(
-        Math.random() *
-        familyColors.length
-      )
-    ];
+  const target = randomTargetColor();
 
 
   const candidates =
