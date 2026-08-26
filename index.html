@@ -284,19 +284,13 @@
 ========================================= */
 
 const colors = [
+  // 赤・紅
   {
-    id: "yamabuki",
-    name: "山吹色",
-    reading: "やまぶきいろ",
-    hex: "#F8B500",
-    family: "yellow"
-  },
-  {
-    id: "ai",
-    name: "藍色",
-    reading: "あいいろ",
-    hex: "#165E83",
-    family: "blue"
+    id: "beni",
+    name: "紅",
+    reading: "べに",
+    hex: "#CB1B45",
+    family: "red"
   },
   {
     id: "akane",
@@ -306,27 +300,54 @@ const colors = [
     family: "red"
   },
   {
-    id: "moegi",
-    name: "萌黄色",
-    reading: "もえぎいろ",
-    hex: "#C3D825",
-    family: "green"
+    id: "shu",
+    name: "朱色",
+    reading: "しゅいろ",
+    hex: "#E94709",
+    family: "orange"
+  },
+  {
+    id: "enji",
+    name: "臙脂",
+    reading: "えんじ",
+    hex: "#9F1D35",
+    family: "red"
+  },
+  {
+    id: "koubai",
+    name: "紅梅色",
+    reading: "こうばいいろ",
+    hex: "#F2A0A1",
+    family: "pink"
   },
 
-  /* 鑑色用：同系色 */
-
+  // 橙・黄
   {
-    id: "yamabuki-light",
+    id: "yamabuki",
     name: "山吹色",
     reading: "やまぶきいろ",
-    hex: "#F8B500",
+    hex: "#F8B400",
     family: "yellow"
   },
   {
     id: "karashi",
     name: "芥子色",
     reading: "からしいろ",
-    hex: "#D8A600",
+    hex: "#D0AF4C",
+    family: "yellow"
+  },
+  {
+    id: "ukon",
+    name: "鬱金色",
+    reading: "うこんいろ",
+    hex: "#E69B00",
+    family: "yellow"
+  },
+  {
+    id: "kogane",
+    name: "黄金",
+    reading: "こがね",
+    hex: "#E6B422",
     family: "yellow"
   },
   {
@@ -336,15 +357,201 @@ const colors = [
     hex: "#D3A243",
     family: "yellow"
   },
+
+  // 緑
   {
-    id: "ukon",
-    name: "鬱金色",
-    reading: "うこんいろ",
-    hex: "#E69B00",
-    family: "yellow"
+    id: "moegi",
+    name: "萌黄色",
+    reading: "もえぎいろ",
+    hex: "#A9D159",
+    family: "green"
+  },
+  {
+    id: "moegi2",
+    name: "萌葱色",
+    reading: "もえぎいろ",
+    hex: "#006E54",
+    family: "green"
+  },
+  {
+    id: "wakakusa",
+    name: "若草色",
+    reading: "わかくさいろ",
+    hex: "#A8C97F",
+    family: "green"
+  },
+  {
+    id: "hisui",
+    name: "翡翠色",
+    reading: "ひすいいろ",
+    hex: "#38B48B",
+    family: "green"
+  },
+  {
+    id: "hana_rokusho",
+    name: "花緑青",
+    reading: "はなろくしょう",
+    hex: "#00A381",
+    family: "green"
+  },
+
+  // 青・藍
+  {
+    id: "ai",
+    name: "藍色",
+    reading: "あいいろ",
+    hex: "#165E83",
+    family: "blue"
+  },
+  {
+    id: "kon",
+    name: "紺色",
+    reading: "こんいろ",
+    hex: "#1C305C",
+    family: "blue"
+  },
+  {
+    id: "hanada",
+    name: "縹",
+    reading: "はなだ",
+    hex: "#006284",
+    family: "blue"
+  },
+  {
+    id: "asagi",
+    name: "浅葱色",
+    reading: "あさぎいろ",
+    hex: "#00A3AF",
+    family: "cyan"
+  },
+  {
+    id: "mizuasagi",
+    name: "水浅葱",
+    reading: "みずあさぎ",
+    hex: "#80ABA9",
+    family: "cyan"
+  },
+  {
+    id: "gunjo",
+    name: "群青色",
+    reading: "ぐんじょういろ",
+    hex: "#465DAA",
+    family: "blue"
+  },
+
+  // 紫
+  {
+    id: "fuji",
+    name: "藤色",
+    reading: "ふじいろ",
+    hex: "#AFB4DB",
+    family: "purple"
+  },
+  {
+    id: "kodai_murasaki",
+    name: "古代紫",
+    reading: "こだいむらさき",
+    hex: "#895B8A",
+    family: "purple"
+  },
+  {
+    id: "nasukon",
+    name: "茄子紺",
+    reading: "なすこん",
+    hex: "#824880",
+    family: "purple"
+  },
+  {
+    id: "kyo_murasaki",
+    name: "京紫",
+    reading: "きょうむらさき",
+    hex: "#9D5B8B",
+    family: "purple"
+  },
+
+  // 桃・桜
+  {
+    id: "sakura",
+    name: "桜色",
+    reading: "さくらいろ",
+    hex: "#FEF4F4",
+    family: "pink"
+  },
+  {
+    id: "usuzakura",
+    name: "薄桜",
+    reading: "うすざくら",
+    hex: "#FDEFF2",
+    family: "pink"
+  },
+  {
+    id: "momoiro",
+    name: "桃色",
+    reading: "ももいろ",
+    hex: "#F0A0A0",
+    family: "pink"
+  },
+  {
+    id: "tokiiro",
+    name: "鴇色",
+    reading: "ときいろ",
+    hex: "#F4B3C2",
+    family: "pink"
+  },
+
+  // 茶・土
+  {
+    id: "azuki",
+    name: "小豆色",
+    reading: "あずきいろ",
+    hex: "#96514D",
+    family: "brown"
+  },
+  {
+    id: "karacha",
+    name: "枯茶",
+    reading: "からちゃ",
+    hex: "#8D6449",
+    family: "brown"
+  },
+  {
+    id: "tsuchi",
+    name: "土色",
+    reading: "つちいろ",
+    hex: "#BC763C",
+    family: "brown"
+  },
+  {
+    id: "raku_da",
+    name: "駱駝色",
+    reading: "らくだいろ",
+    hex: "#BF794E",
+    family: "brown"
+  },
+  {
+    id: "ame",
+    name: "飴色",
+    reading: "あめいろ",
+    hex: "#DEB068",
+    family: "brown"
+  },
+
+  // 無彩色
+  {
+    id: "nezumi",
+    name: "鼠色",
+    reading: "ねずみいろ",
+    hex: "#949495",
+    family: "neutral"
+  },
+  {
+    id: "sakuran_ezu",
+    name: "桜鼠",
+    reading: "さくらねず",
+    hex: "#E9DFE5",
+    family: "neutral"
   }
 ];
-
 
 /* =========================================
    状態
@@ -413,17 +620,27 @@ function createShikibetsuQuestion() {
 ========================================= */
 
 function createKanshikiQuestion() {
+  const target =
+    colors[Math.floor(Math.random() * colors.length)];
 
-  const yellowColors = [
-    getColor("yamabuki-light"),
-    getColor("karashi"),
-    getColor("kikuchibairo"),
-    getColor("ukon")
+  const sameFamily =
+    colors.filter(
+      c =>
+        c.family === target.family &&
+        c.id !== target.id
+    );
+
+  if (sameFamily.length < 3) {
+    return createKanshikiQuestion();
+  }
+
+  const choices = [
+    target,
+    ...shuffle(sameFamily).slice(0, 3)
   ];
 
-  currentQuestion = yellowColors[0];
-
-  currentChoices = shuffle(yellowColors);
+  currentQuestion = target;
+  currentChoices = shuffle(choices);
 }
 
 
