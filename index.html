@@ -515,13 +515,115 @@
   margin-left: 8px;
   font-size: 10px;
 }
-    
+
+/* ---------- footer advertisement ---------- */
+
+.footer-ad {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 62px;
+  padding: 8px 14px;
+
+  background: rgba(255, 255, 255, .96);
+  border-top: 1px solid #ded7cc;
+  box-shadow: 0 -4px 16px rgba(0,0,0,.06);
+}
+
+.footer-ad a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  width: min(700px, 100%);
+  min-height: 46px;
+
+  padding: 8px 18px;
+
+  border-radius: 14px;
+
+  background: #292622;
+  color: #fff;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  letter-spacing: .04em;
+}
+
+.footer-ad-title {
+  font-family: serif;
+  font-size: 17px;
+}
+
+.footer-ad-text {
+  opacity: .8;
+}
+
+.footer-ad-arrow {
+  margin-left: auto;
+  opacity: .7;
+}
+
+/* 広告に隠れないようにする */
+.app {
+  padding-bottom: 110px;
+}
+
+@media (max-width: 480px) {
+
+  .footer-ad {
+    min-height: 58px;
+    padding: 7px 10px;
+  }
+
+  .footer-ad a {
+    gap: 8px;
+    padding: 7px 12px;
+    font-size: 11px;
+  }
+
+  .footer-ad-title {
+    font-size: 15px;
+  }
+
+}
   </style>
 </head>
 
 <body>
 
 <div id="app"></div>
+<footer class="footer-ad">
+
+  <a
+    href="https://quietroom-dev.github.io/QuietRoom/"
+    target="_blank"
+    rel="noopener noreferrer">
+
+    <span class="footer-ad-title">
+      誰かわからん通話
+    </span>
+
+    <span class="footer-ad-text">
+      誰かわからないから、話しやすい。
+    </span>
+
+    <span class="footer-ad-arrow">
+      →
+    </span>
+
+  </a>
+
+</footer>
 
 <script>
 
