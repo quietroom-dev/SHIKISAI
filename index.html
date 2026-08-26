@@ -2202,7 +2202,7 @@ function renderRanks() {
             rank => {
 
               const reached =
-                state.correctAnswers >=
+                state.discovered.size >= >=
                 rank.required;
 
               const isCurrent =
