@@ -1573,13 +1573,22 @@ function renderHome() {
 
 
         <button
-          class="dictionary-button"
-          onclick="openDictionary()">
+  class="menu-item"
+  onclick="openDictionary()">
 
-          知色（ちしき）
-          　色図鑑
+  <span class="menu-title">
+    知色
+  </span>
 
-        </button>
+  <span class="menu-reading">
+    ちしき
+  </span>
+
+  <span class="menu-description">
+    見つけた色を記録する色図鑑
+  </span>
+
+</button>
 
 
         <section class="stats">
@@ -2311,7 +2320,24 @@ function renderDictionary() {
           </p>
 
         </div>
+        <section class="stats">
 
+          <div class="stats-title">
+            発見した色
+          </div>
+
+
+          <div class="stats-number">
+
+            ${
+              state.discovered.size
+            }
+
+            /
+
+            ${COLORS.length}
+
+          </div>
 
         <section class="dictionary">
 
@@ -2378,26 +2404,6 @@ function renderDictionary() {
           ).join("")}
 
         </section>
-
-
-        <section class="stats">
-
-          <div class="stats-title">
-            発見した色
-          </div>
-
-
-          <div class="stats-number">
-
-            ${
-              state.discovered.size
-            }
-
-            /
-
-            ${COLORS.length}
-
-          </div>
 
         </section>
 
