@@ -406,6 +406,40 @@
         gap: 10px;
       }
     }
+
+    /* ---------- 回答後の色名 ---------- */
+
+.choice-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.choice-name {
+  min-height: 43px;
+  padding: 7px 4px 0;
+  text-align: center;
+}
+
+.choice-name-main {
+  font-family: serif;
+  font-size: 16px;
+}
+
+.choice-name-reading {
+  margin-top: 2px;
+  color: #8b8378;
+  font-size: 10px;
+}
+
+.choice.correct-choice {
+  box-shadow:
+    0 0 0 3px #526d4c,
+    0 4px 14px rgba(0,0,0,.12);
+}
+
+.choice.wrong-choice {
+  opacity: .65;
+}
   </style>
 </head>
 
@@ -1501,24 +1535,17 @@ function startMode(mode) {
 function renderQuiz() {
 
   const isShikibetsu =
-    state.mode ===
-    "shikibetsu";
-
+    state.mode === "shikibetsu";
 
   const modeName =
     isShikibetsu
       ? "色別"
       : "鑑色";
 
-
   const modeDescription =
     isShikibetsu
-      ? "系統の違う色から識る"
+      ? "系統の違う色から選ぶ"
       : "同系色の中から見極める";
-
-
-  const question =
-    state.question;
 
 
   document.getElementById("app")
@@ -1551,34 +1578,12 @@ function renderQuiz() {
         <section class="question-card">
 
           <div class="question-label">
-            この色を識れ
+            この色は何色？
           </div>
 
-
-          <div
-            class="question-color"
-            style="
-              background:${question.hex};
-            "
-            aria-label="問題の色">
+          <div class="question-name">
+            ${state.question.name}
           </div>
-
-
-          ${
-            state.answered
-              ? `
-
-                <div>
-                  正解：
-                  <strong>
-                    ${question.name}
-                  </strong>
-                  （${question.reading}）
-                </div>
-
-              `
-              : ""
-          }
 
         </section>
 
@@ -1586,36 +1591,102 @@ function renderQuiz() {
         <section class="choices">
 
           ${state.choices.map(
-            color => `
+            color => {
 
-              <button
-                class="choice"
-                style="
-                  background:${color.hex};
-                "
-                ${
-                  state.answered
-                    ? "disabled"
-                    : ""
-                }
-                onclick="
-                  answer('${color.id}')
-                "
-                aria-label="色を選択">
+              let choiceClass = "choice";
 
-              </button>
 
-            `
+              /*
+                回答後は、
+                正解カードを強調する。
+              */
+
+              if (
+                state.answered &&
+                color.id === state.question.id
+              ) {
+
+                choiceClass +=
+                  " correct-choice";
+
+              }
+
+
+              /*
+                選択した不正解カードは
+                少し薄くする。
+              */
+
+              if (
+                state.answered &&
+                color.id === state.selectedId &&
+                color.id !== state.question.id
+              ) {
+
+                choiceClass +=
+                  " wrong-choice";
+
+              }
+
+
+              return `
+
+                <div class="choice-wrapper">
+
+                  <button
+                    class="${choiceClass}"
+                    style="
+                      background:${color.hex};
+                    "
+                    ${
+                      state.answered
+                        ? "disabled"
+                        : ""
+                    }
+                    onclick="
+                      answer('${color.id}')
+                    "
+                    aria-label="
+                      色を選択
+                    ">
+
+                  </button>
+
+
+                  ${
+                    state.answered
+                      ? `
+
+                        <div class="choice-name">
+
+                          <div
+                            class="choice-name-main">
+
+                            ${color.name}
+
+                          </div>
+
+                          <div
+                            class="choice-name-reading">
+
+                            ${color.reading}
+
+                          </div>
+
+                        </div>
+
+                      `
+                      : ""
+                  }
+
+                </div>
+
+              `;
+
+            }
           ).join("")}
 
         </section>
-
-
-        ${
-          state.answered
-            ? renderAnswerDetails()
-            : ""
-        }
 
 
         <div
@@ -1662,7 +1733,6 @@ function renderQuiz() {
     `;
 
 }
-
 
 /* =====================================================
    回答後の4色一覧
