@@ -2270,11 +2270,13 @@ function renderRanks() {
         <section class="stats">
 
           <div class="stats-title">
-            現在の正解数
+            発見した色
           </div>
 
           <div class="stats-number">
-            ${state.correctAnswers}
+            ${
+              state.discovered.size
+            }
           </div>
 
         </section>
