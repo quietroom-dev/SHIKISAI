@@ -599,20 +599,34 @@ function shuffle(array) {
 ========================================= */
 
 function createShikibetsuQuestion() {
+  const target =
+    colors[Math.floor(Math.random() * colors.length)];
 
-  const questionPool = [
-    getColor("yamabuki"),
-    getColor("ai"),
-    getColor("akane"),
-    getColor("moegi")
+  const otherFamilies = [
+    ...new Set(
+      colors
+        .map(c => c.family)
+        .filter(f => f !== target.family)
+    )
   ];
 
-  currentQuestion =
-    questionPool[Math.floor(Math.random() * questionPool.length)];
+  const families = shuffle(otherFamilies).slice(0, 3);
 
-  currentChoices = shuffle(questionPool);
+  const choices = [
+    target,
+    ...families.map(f => {
+      const candidates =
+        colors.filter(c => c.family === f);
+
+      return candidates[
+        Math.floor(Math.random() * candidates.length)
+      ];
+    })
+  ];
+
+  currentQuestion = target;
+  currentChoices = shuffle(choices);
 }
-
 
 /* =========================================
    鑑色
