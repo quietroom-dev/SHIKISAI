@@ -568,6 +568,15 @@
   padding-bottom: 110px;
 }
 
+.footer-ad-label {
+  padding: 4px 8px;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 6px;
+  font-size: 10px;
+  letter-spacing: .08em;
+  opacity: .8;
+}
+
 @media (max-width: 480px) {
 
   .footer-ad {
@@ -584,15 +593,6 @@
   .footer-ad-title {
     font-size: 15px;
   }
-
-  .footer-ad-label {
-  padding: 4px 8px;
-  border: 1px solid rgba(255,255,255,.35);
-  border-radius: 6px;
-  font-size: 10px;
-  letter-spacing: .08em;
-  opacity: .8;
-}
 
 }
   </style>
@@ -1074,10 +1074,10 @@ function shuffle(array) {
 function randomTargetColor() {
 
   const undiscovered =
-    COLORS.filter(
-      color =>
-        !state.discovered.has(color.name)
-    );
+  COLORS.filter(
+    color =>
+      !state.discovered.has(color.id)
+  );
 
   // 未登録色があれば80%の確率で未登録色を出す
   if (
@@ -2341,24 +2341,24 @@ function renderDictionary() {
           </p>
 
         </div>
+
+
         <section class="stats">
 
           <div class="stats-title">
             発見した色
           </div>
 
-
           <div class="stats-number">
 
-            ${
-              state.discovered.size
-            }
-
+            ${state.discovered.size}
             /
-
             ${COLORS.length}
 
           </div>
+
+        </section>
+
 
         <section class="dictionary">
 
@@ -2386,8 +2386,7 @@ function renderDictionary() {
                   <div
                     class="color-sample"
                     style="
-                      background:
-                        ${color.hex};
+                      background:${color.hex};
                     ">
                   </div>
 
@@ -2426,14 +2425,11 @@ function renderDictionary() {
 
         </section>
 
-        </section>
-
       </main>
 
     `;
 
 }
-
 
 /* =====================================================
    ホームへ
