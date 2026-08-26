@@ -531,324 +531,352 @@
 
 const COLORS = [
 
-  /* ---------- 赤 ---------- */
+  /* =====================================================
+     赤・桃
+     ===================================================== */
 
-  {
-    id: "beni",
-    name: "紅",
-    reading: "べに",
-    hex: "#CB1B45",
-    family: "red"
-  },
+  { id:"n701", name:"紅梅色", reading:"こうばいいろ", hex:"#F88B94", family:"pink" },
+  { id:"n702", name:"コスモス色", reading:"こすもすいろ", hex:"#E77B9F", family:"pink" },
+  { id:"n703", name:"桜桃色", reading:"さくらんぼいろ", hex:"#E25C83", family:"pink" },
+  { id:"n704", name:"桜色", reading:"さくらいろ", hex:"#F3D6CF", family:"pink" },
+  { id:"n705", name:"ベビーピンク", reading:"べびーぴんく", hex:"#F7C7BF", family:"pink" },
+  { id:"n706", name:"シェルピンク", reading:"しぇるぴんく", hex:"#F7CDB9", family:"pink" },
+  { id:"n707", name:"石竹色", reading:"せきちくいろ", hex:"#FBABAF", family:"pink" },
+  { id:"n708", name:"鴇色", reading:"ときいろ", hex:"#FA9A92", family:"pink" },
+  { id:"n709", name:"桃花色", reading:"とうかいろ", hex:"#FA999A", family:"pink" },
+  { id:"n710", name:"鮭色", reading:"さけいろ", hex:"#F59B8C", family:"orange" },
+  { id:"n711", name:"肉色", reading:"にくいろ", hex:"#F7A386", family:"orange" },
+  { id:"n712", name:"洗朱", reading:"せんしゅ", hex:"#FC8D7D", family:"orange" },
+  { id:"n713", name:"珊瑚色", reading:"さんごいろ", hex:"#F17161", family:"orange" },
+  { id:"n714", name:"浅緋", reading:"あさひ", hex:"#F17E7A", family:"red" },
+  { id:"n715", name:"薔薇色", reading:"ばらいろ", hex:"#EB6368", family:"red" },
+  { id:"n716", name:"薄紅", reading:"うすべに", hex:"#DF8081", family:"red" },
+  { id:"n717", name:"長春色", reading:"ちょうしゅんいろ", hex:"#D88B83", family:"red" },
+  { id:"n718", name:"灰桜", reading:"はいざくら", hex:"#D1B6B1", family:"pink" },
+  { id:"n719", name:"紅色", reading:"べにいろ", hex:"#C22047", family:"red" },
+  { id:"n720", name:"蘇芳色", reading:"すおういろ", hex:"#A64156", family:"red" },
+  { id:"n721", name:"薄蘇芳", reading:"うすすおう", hex:"#BC666F", family:"red" },
+  { id:"n722", name:"唐紅花", reading:"とうこうか", hex:"#D93448", family:"red" },
+  { id:"n723", name:"緋色", reading:"ひいろ", hex:"#E54848", family:"red" },
+  { id:"n724", name:"猩々緋", reading:"しょうじょうひ", hex:"#CE313D", family:"red" },
+  { id:"n725", name:"深緋", reading:"こきひ", hex:"#B2243C", family:"red" },
+  { id:"n726", name:"茜色", reading:"あかねいろ", hex:"#B13546", family:"red" },
+  { id:"n727", name:"臙脂色", reading:"えんじいろ", hex:"#922E41", family:"red" },
+  { id:"n728", name:"緋褪色", reading:"ひあせいろ", hex:"#AD6462", family:"red" },
+  { id:"n729", name:"小豆色", reading:"あずきいろ", hex:"#8A4647", family:"red" },
+  { id:"n730", name:"滅赤", reading:"めっせき", hex:"#926D6B", family:"red" },
 
-  {
-    id: "akane",
-    name: "茜色",
-    reading: "あかねいろ",
-    hex: "#B7282E",
-    family: "red"
-  },
+  /* =====================================================
+     橙・黄
+     ===================================================== */
 
-  {
-    id: "enji",
-    name: "臙脂",
-    reading: "えんじ",
-    hex: "#9F1D35",
-    family: "red"
-  },
+  { id:"n731", name:"朱色", reading:"しゅいろ", hex:"#DF4840", family:"orange" },
+  { id:"n732", name:"柿色", reading:"かきいろ", hex:"#F17C5A", family:"orange" },
+  { id:"n733", name:"人参色", reading:"にんじんいろ", hex:"#ED714C", family:"orange" },
+  { id:"n734", name:"膚色", reading:"はだいろ", hex:"#FCBA98", family:"orange" },
+  { id:"n735", name:"杏色", reading:"あんずいろ", hex:"#FFA06F", family:"orange" },
+  { id:"n736", name:"橙色", reading:"だいだいいろ", hex:"#ED7A25", family:"orange" },
+  { id:"n737", name:"黄丹", reading:"おうたん", hex:"#E67135", family:"orange" },
+  { id:"n738", name:"蜜柑茶", reading:"みかんちゃ", hex:"#C66719", family:"orange" },
+  { id:"n739", name:"飴色", reading:"あめいろ", hex:"#BE602C", family:"brown" },
+  { id:"n740", name:"蒲色", reading:"がまいろ", hex:"#AF5F37", family:"orange" },
+  { id:"n741", name:"コルク色", reading:"こるくいろ", hex:"#D1926C", family:"brown" },
+  { id:"n742", name:"萱草色", reading:"かんぞういろ", hex:"#FF9B00", family:"orange" },
+  { id:"n743", name:"柑子色", reading:"こうしいろ", hex:"#F78E00", family:"orange" },
+  { id:"n744", name:"纁", reading:"そめ", hex:"#EA8712", family:"orange" },
+  { id:"n745", name:"小麦色", reading:"こむぎいろ", hex:"#DC9A62", family:"brown" },
+  { id:"n746", name:"丁字色", reading:"ちょうじいろ", hex:"#D1A579", family:"brown" },
+  { id:"n747", name:"琥珀色", reading:"こはくいろ", hex:"#D27B22", family:"orange" },
+  { id:"n748", name:"金茶色", reading:"きんちゃいろ", hex:"#AC6525", family:"brown" },
+  { id:"n749", name:"黄土色", reading:"こうどいろ", hex:"#C4832A", family:"brown" },
+  { id:"n750", name:"山吹茶", reading:"やまぶきちゃ", hex:"#BD7726", family:"brown" },
 
-  {
-    id: "suou",
-    name: "蘇芳",
-    reading: "すおう",
-    hex: "#9E3D3F",
-    family: "red"
-  },
+  /* =====================================================
+     茶・土
+     ===================================================== */
 
-  /* ---------- 桃 ---------- */
+  { id:"n751", name:"柿渋色", reading:"かきしぶいろ", hex:"#AE6C62", family:"brown" },
+  { id:"n752", name:"煉瓦色", reading:"れんがいろ", hex:"#B86853", family:"brown" },
+  { id:"n753", name:"弁柄色", reading:"べんがらいろ", hex:"#8E5040", family:"brown" },
+  { id:"n754", name:"栗梅", reading:"くりうめ", hex:"#844E42", family:"brown" },
+  { id:"n755", name:"海老茶", reading:"えびちゃ", hex:"#B13435", family:"brown" },
+  { id:"n756", name:"マルーン", reading:"まるーん", hex:"#613931", family:"brown" },
+  { id:"n757", name:"チョコレート色", reading:"ちょこれーといろ", hex:"#64433A", family:"brown" },
+  { id:"n758", name:"駱駝色", reading:"らくだいろ", hex:"#C1855F", family:"brown" },
+  { id:"n759", name:"肉桂色", reading:"にっけいいろ", hex:"#B97551", family:"brown" },
+  { id:"n760", name:"雀茶", reading:"すずめちゃ", hex:"#A66A4A", family:"brown" },
+  { id:"n761", name:"代赭色", reading:"たいしゃいろ", hex:"#9E6245", family:"brown" },
+  { id:"n762", name:"栗皮色", reading:"くりかわいろ", hex:"#6C4432", family:"brown" },
+  { id:"n763", name:"桧皮色", reading:"ひわだいろ", hex:"#53362D", family:"brown" },
+  { id:"n764", name:"鳶色", reading:"とびいろ", hex:"#7E5C48", family:"brown" },
+  { id:"n765", name:"棕櫚色", reading:"しゅろいろ", hex:"#715141", family:"brown" },
+  { id:"n766", name:"ココア色", reading:"ここあいろ", hex:"#5F4B46", family:"brown" },
+  { id:"n767", name:"幹色", reading:"みきいろ", hex:"#C7925D", family:"brown" },
+  { id:"n768", name:"狐色", reading:"きつねいろ", hex:"#C48847", family:"brown" },
+  { id:"n769", name:"丁字茶", reading:"ちょうじちゃ", hex:"#B98E68", family:"brown" },
+  { id:"n770", name:"黄櫨染", reading:"こうろぜん", hex:"#9C7353", family:"brown" },
+  { id:"n771", name:"枯葉色", reading:"かれはいろ", hex:"#90623E", family:"brown" },
+  { id:"n772", name:"煙草色", reading:"たばこいろ", hex:"#84542B", family:"brown" },
+  { id:"n773", name:"生壁色", reading:"なまかべいろ", hex:"#9E7D59", family:"brown" },
+  { id:"n774", name:"柴色", reading:"ふしいろ", hex:"#85715C", family:"brown" },
+  { id:"n775", name:"朽葉色", reading:"くちばいろ", hex:"#806149", family:"brown" },
+  { id:"n776", name:"煤竹色", reading:"すすたけいろ", hex:"#5C442F", family:"brown" },
+  { id:"n777", name:"焦茶", reading:"こげちゃ", hex:"#5B493F", family:"brown" },
+  { id:"n778", name:"憲法色", reading:"けんぽういろ", hex:"#39342C", family:"brown" },
+  { id:"n779", name:"赤香色", reading:"あかごういろ", hex:"#CBA488", family:"brown" },
+  { id:"n780", name:"薄香色", reading:"うすこういろ", hex:"#EAD1B6", family:"brown" },
+  { id:"n781", name:"砥の粉色", reading:"とのこいろ", hex:"#E6C096", family:"brown" },
+  { id:"n782", name:"素色", reading:"しろいろ", hex:"#DEC3A4", family:"neutral" },
+  { id:"n783", name:"香色", reading:"こういろ", hex:"#D7B190", family:"brown" },
+  { id:"n784", name:"ベージュ", reading:"べーじゅ", hex:"#CCB599", family:"neutral" },
+  { id:"n785", name:"白茶", reading:"しらちゃ", hex:"#BCA68B", family:"brown" },
+  { id:"n786", name:"亜麻色", reading:"あまいろ", hex:"#CCA883", family:"brown" },
+  { id:"n787", name:"鳥の子色", reading:"とりのこいろ", hex:"#F3DCB7", family:"yellow" },
+  { id:"n788", name:"クリーム", reading:"くりーむ", hex:"#F5D7A7", family:"yellow" },
+  { id:"n789", name:"象牙色", reading:"ぞうげいろ", hex:"#E6D2B1", family:"neutral" },
 
-  {
-    id: "sakura",
-    name: "桜色",
-    reading: "さくらいろ",
-    hex: "#FEF4F4",
-    family: "pink"
-  },
+  /* =====================================================
+     黄
+     ===================================================== */
 
-  {
-    id: "koubai",
-    name: "紅梅色",
-    reading: "こうばいいろ",
-    hex: "#F2A0A1",
-    family: "pink"
-  },
+  { id:"n790", name:"支子色", reading:"くちなしいろ", hex:"#FDC96C", family:"yellow" },
+  { id:"n791", name:"とうもろこし色", reading:"とうもろこしいろ", hex:"#FFBB65", family:"yellow" },
+  { id:"n792", name:"卵色", reading:"たまごいろ", hex:"#FFB659", family:"yellow" },
+  { id:"n793", name:"山吹色", reading:"やまぶきいろ", hex:"#FFA826", family:"yellow" },
+  { id:"n794", name:"向日葵色", reading:"ひまわりいろ", hex:"#FFBA20", family:"yellow" },
+  { id:"n795", name:"鬱金色", reading:"うこんいろ", hex:"#E7A61A", family:"yellow" },
+  { id:"n796", name:"桑色", reading:"くわいろ", hex:"#EABE8A", family:"yellow" },
+  { id:"n797", name:"枯草色", reading:"かれくさいろ", hex:"#E0A763", family:"yellow" },
+  { id:"n798", name:"深支子", reading:"こきくちなし", hex:"#D49F3E", family:"yellow" },
+  { id:"n799", name:"カーキー色", reading:"かーきーいろ", hex:"#A4834D", family:"yellow" },
+  { id:"n800", name:"砂色", reading:"すないろ", hex:"#B8A687", family:"brown" },
+  { id:"n801", name:"蒸栗色", reading:"むしくりいろ", hex:"#E7CD8C", family:"yellow" },
+  { id:"n802", name:"黄水仙", reading:"きすいせん", hex:"#F9D36E", family:"yellow" },
+  { id:"n803", name:"黄蘗色", reading:"きはだいろ", hex:"#EFCD52", family:"yellow" },
+  { id:"n804", name:"苅安", reading:"かりやす", hex:"#FDC600", family:"yellow" },
+  { id:"n805", name:"蒲公英色", reading:"たんぽぽいろ", hex:"#EEBA00", family:"yellow" },
+  { id:"n806", name:"レモン色", reading:"れもんいろ", hex:"#E2C200", family:"yellow" },
+  { id:"n807", name:"カナリヤ色", reading:"かなりやいろ", hex:"#EAB905", family:"yellow" },
+  { id:"n808", name:"菜の花色", reading:"なのはないろ", hex:"#E7BE00", family:"yellow" },
+  { id:"n809", name:"藁色", reading:"わらいろ", hex:"#D1B15A", family:"yellow" },
+  { id:"n810", name:"菜種色", reading:"なたねいろ", hex:"#C6A647", family:"yellow" },
+  { id:"n811", name:"芥子色", reading:"からしいろ", hex:"#B7983B", family:"yellow" },
+  { id:"n812", name:"利休白茶", reading:"りきゅうしらちゃ", hex:"#B6AB8A", family:"green" },
 
-  {
-    id: "momoiro",
-    name: "桃色",
-    reading: "ももいろ",
-    hex: "#F0A0A0",
-    family: "pink"
-  },
+  /* =====================================================
+     緑
+     ===================================================== */
 
-  {
-    id: "tokiiro",
-    name: "鴇色",
-    reading: "ときいろ",
-    hex: "#F4B3C2",
-    family: "pink"
-  },
+  { id:"n813", name:"千歳茶", reading:"せんざいちゃ", hex:"#53462F", family:"green" },
+  { id:"n814", name:"鶯茶", reading:"うぐいすちゃ", hex:"#6D5D34", family:"green" },
+  { id:"n815", name:"鶸茶", reading:"ひわちゃ", hex:"#847030", family:"green" },
+  { id:"n816", name:"オリーブ色", reading:"おりーぶいろ", hex:"#6A5D2A", family:"green" },
+  { id:"n817", name:"海松茶", reading:"みるちゃ", hex:"#655D3A", family:"green" },
+  { id:"n818", name:"鶯色", reading:"うぐいすいろ", hex:"#706229", family:"green" },
+  { id:"n819", name:"海松色", reading:"みるいろ", hex:"#636947", family:"green" },
+  { id:"n820", name:"オリーブグリーン", reading:"おりーぶぐりーん", hex:"#4E5429", family:"green" },
+  { id:"n821", name:"老竹色", reading:"おいたけいろ", hex:"#858D70", family:"green" },
+  { id:"n822", name:"山鳩色", reading:"やまばといろ", hex:"#7B7E5A", family:"green" },
+  { id:"n823", name:"老緑", reading:"おいみどり", hex:"#717057", family:"green" },
+  { id:"n824", name:"オリーブ鼠", reading:"おりーぶねず", hex:"#615D48", family:"green" },
+  { id:"n825", name:"猫柳色", reading:"ねこやなぎいろ", hex:"#D2CC94", family:"green" },
+  { id:"n826", name:"若芽色", reading:"わかめいろ", hex:"#C8CE6F", family:"green" },
+  { id:"n827", name:"若苗色", reading:"わかなえいろ", hex:"#C2CC2A", family:"green" },
+  { id:"n828", name:"若葉色", reading:"わかばいろ", hex:"#A5BE51", family:"green" },
+  { id:"n829", name:"若草色", reading:"わかくさいろ", hex:"#94B428", family:"green" },
+  { id:"n830", name:"鶸色", reading:"ひわいろ", hex:"#C0BB1D", family:"green" },
+  { id:"n831", name:"鶸萌葱", reading:"ひわもえぎ", hex:"#A6AE23", family:"green" },
+  { id:"n832", name:"萌葱色", reading:"もえぎいろ", hex:"#86A22F", family:"green" },
+  { id:"n833", name:"香櫞緑", reading:"こうえんみどり", hex:"#818927", family:"green" },
+  { id:"n834", name:"草色", reading:"くさいろ", hex:"#667C29", family:"green" },
+  { id:"n835", name:"柳葉色", reading:"やなぎばいろ", hex:"#A3AB40", family:"green" },
+  { id:"n836", name:"豌豆緑", reading:"えんどうみどり", hex:"#A4BA5F", family:"green" },
+  { id:"n837", name:"苔色", reading:"こけいろ", hex:"#6D7327", family:"green" },
+  { id:"n838", name:"抹茶色", reading:"まっちゃいろ", hex:"#A5A675", family:"green" },
+  { id:"n839", name:"白緑", reading:"びゃくろく", hex:"#C6DFBF", family:"green" },
+  { id:"n840", name:"浅緑", reading:"あさみどり", hex:"#B1D0A2", family:"green" },
+  { id:"n841", name:"若緑", reading:"わかみどり", hex:"#93D6A4", family:"green" },
+  { id:"n842", name:"青磁色", reading:"せいじいろ", hex:"#81BD9B", family:"green" },
+  { id:"n843", name:"若竹色", reading:"わかたけいろ", hex:"#65C195", family:"green" },
+  { id:"n844", name:"エメラルドグリーン", reading:"えめらるどぐりーん", hex:"#23AD7B", family:"green" },
+  { id:"n845", name:"青竹色", reading:"あおたけいろ", hex:"#2A9C7A", family:"green" },
+  { id:"n846", name:"鸚鵡緑", reading:"おうむみどり", hex:"#3D963B", family:"green" },
+  { id:"n847", name:"常盤緑", reading:"ときわみどり", hex:"#2E792D", family:"green" },
+  { id:"n848", name:"深緑", reading:"ふかみどり", hex:"#00664B", family:"green" },
+  { id:"n849", name:"山葵色", reading:"わさびいろ", hex:"#81A98A", family:"green" },
+  { id:"n850", name:"緑青", reading:"ろくしょう", hex:"#64957A", family:"green" },
+  { id:"n851", name:"松葉色", reading:"まつばいろ", hex:"#51713E", family:"green" },
+  { id:"n852", name:"木賊色", reading:"とくさいろ", hex:"#40684F", family:"green" },
+  { id:"n853", name:"千歳緑", reading:"せんざいみどり", hex:"#35533A", family:"green" },
+  { id:"n854", name:"海松藍", reading:"みるあい", hex:"#1F4039", family:"green" },
+  { id:"n855", name:"裏葉色", reading:"うらはいろ", hex:"#A1B297", family:"green" },
+  { id:"n856", name:"錆青磁", reading:"さびせいじ", hex:"#97B5A1", family:"green" },
+  { id:"n857", name:"灰緑", reading:"はいみどり", hex:"#879E88", family:"green" },
+  { id:"n858", name:"千草鼠", reading:"ちぐさねず", hex:"#6C8270", family:"green" },
+  { id:"n859", name:"黒緑", reading:"くろみどり", hex:"#2B3A33", family:"green" },
 
-  /* ---------- 橙 ---------- */
+  /* =====================================================
+     水色・青
+     ===================================================== */
 
-  {
-    id: "shu",
-    name: "朱色",
-    reading: "しゅいろ",
-    hex: "#E94709",
-    family: "orange"
-  },
+  { id:"n860", name:"薄浅葱", reading:"うすあさぎ", hex:"#7DCBCC", family:"cyan" },
+  { id:"n861", name:"水浅葱", reading:"みずあさぎ", hex:"#3ABCB8", family:"cyan" },
+  { id:"n862", name:"ターコイズグリーン", reading:"たーこいずぐりーん", hex:"#00A095", family:"cyan" },
+  { id:"n863", name:"孔雀緑", reading:"くじゃくみどり", hex:"#006F5D", family:"cyan" },
+  { id:"n864", name:"小鴨色", reading:"こがもいろ", hex:"#006263", family:"cyan" },
+  { id:"n865", name:"錆浅葱", reading:"さびあさぎ", hex:"#5F8786", family:"cyan" },
+  { id:"n866", name:"錆納戸", reading:"さびなんど", hex:"#336C71", family:"cyan" },
+  { id:"n867", name:"納戸鼠", reading:"なんどねず", hex:"#4C6264", family:"cyan" },
+  { id:"n868", name:"鉄色", reading:"てついろ", hex:"#103736", family:"cyan" },
+  { id:"n869", name:"藍白", reading:"あいじろ", hex:"#BADDE2", family:"cyan" },
+  { id:"n870", name:"ベビーブルー", reading:"べびーぶるー", hex:"#B6DAE5", family:"cyan" },
+  { id:"n871", name:"淡水色", reading:"うすみずいろ", hex:"#B4D8DC", family:"cyan" },
+  { id:"n872", name:"水色", reading:"みずいろ", hex:"#6BBBC8", family:"cyan" },
+  { id:"n873", name:"新橋色", reading:"しんばしいろ", hex:"#3FAEC2", family:"cyan" },
+  { id:"n874", name:"サックスブルー", reading:"さっくすぶるー", hex:"#74C1E3", family:"blue" },
+  { id:"n875", name:"勿忘草色", reading:"わすれなぐさいろ", hex:"#9CC8E2", family:"blue" },
+  { id:"n876", name:"白群", reading:"びゃくぐん", hex:"#88BDE2", family:"blue" },
+  { id:"n877", name:"空色", reading:"そらいろ", hex:"#74B2E0", family:"blue" },
+  { id:"n878", name:"青藤", reading:"あおふじ", hex:"#94A8DD", family:"blue" },
+  { id:"n879", name:"浅葱鼠", reading:"あさぎねず", hex:"#8AA2A9", family:"cyan" },
+  { id:"n880", name:"ターコイズブルー", reading:"たーこいずぶるー", hex:"#00A0BD", family:"cyan" },
+  { id:"n881", name:"浅葱色", reading:"あさぎいろ", hex:"#0096A9", family:"cyan" },
+  { id:"n882", name:"シアンブルー", reading:"しあんぶるー", hex:"#0088A4", family:"cyan" },
+  { id:"n883", name:"孔雀青", reading:"くじゃくあお", hex:"#00657E", family:"blue" },
+  { id:"n884", name:"浅縹", reading:"あさはなだ", hex:"#6398AF", family:"blue" },
+  { id:"n885", name:"納戸色", reading:"なんどいろ", hex:"#145E70", family:"blue" },
+  { id:"n886", name:"花浅葱", reading:"はなあさぎ", hex:"#3E8BB5", family:"blue" },
+  { id:"n887", name:"露草色", reading:"つゆくさいろ", hex:"#3D87C3", family:"blue" },
+  { id:"n888", name:"紺碧", reading:"こんぺき", hex:"#007EB1", family:"blue" },
+  { id:"n889", name:"藍色", reading:"あいいろ", hex:"#006A95", family:"blue" },
+  { id:"n890", name:"コバルトブルー", reading:"こばるとぶるー", hex:"#00548A", family:"blue" },
+  { id:"n891", name:"瑠璃色", reading:"るりいろ", hex:"#2A579A", family:"blue" },
+  { id:"n892", name:"群青色", reading:"ぐんじょういろ", hex:"#223B80", family:"blue" },
+  { id:"n893", name:"紺青", reading:"こんじょう", hex:"#064583", family:"blue" },
+  { id:"n894", name:"濃藍", reading:"こいあい", hex:"#004263", family:"blue" },
+  { id:"n895", name:"淡群青", reading:"うすぐんじょう", hex:"#769DCD", family:"blue" },
+  { id:"n896", name:"縹色", reading:"はなだいろ", hex:"#007099", family:"blue" },
+  { id:"n897", name:"濃縹", reading:"こきはなだ", hex:"#005275", family:"blue" },
+  { id:"n898", name:"鉄紺", reading:"てつこん", hex:"#0D3246", family:"blue" },
+  { id:"n899", name:"紺色", reading:"こんいろ", hex:"#2A305C", family:"blue" },
+  { id:"n900", name:"灰青", reading:"はいあお", hex:"#697C8E", family:"blue" },
+  { id:"n901", name:"藍鼠", reading:"あいねず", hex:"#5D6D7A", family:"blue" },
+  { id:"n902", name:"紺鼠", reading:"こんねず", hex:"#4F5567", family:"blue" },
 
-  {
-    id: "daidai",
-    name: "橙色",
-    reading: "だいだいいろ",
-    hex: "#EE7800",
-    family: "orange"
-  },
+  /* =====================================================
+     紫・桃紫
+     ===================================================== */
 
-  {
-    id: "akakuchinashi",
-    name: "赤朽葉",
-    reading: "あかくちば",
-    hex: "#DB8449",
-    family: "orange"
-  },
+  { id:"n903", name:"薄藤", reading:"うすふじ", hex:"#D8CEE3", family:"purple" },
+  { id:"n904", name:"ラベンダー", reading:"らべんだー", hex:"#C2B4E1", family:"purple" },
+  { id:"n905", name:"藤色", reading:"ふじいろ", hex:"#B5A5D4", family:"purple" },
+  { id:"n906", name:"藤紫", reading:"ふじむらさき", hex:"#A583BE", family:"purple" },
+  { id:"n907", name:"桔梗色", reading:"ききょういろ", hex:"#7862AF", family:"purple" },
+  { id:"n908", name:"菫色", reading:"すみれいろ", hex:"#654E99", family:"purple" },
+  { id:"n909", name:"竜胆色", reading:"りんどういろ", hex:"#9C87C3", family:"purple" },
+  { id:"n910", name:"錆桔梗", reading:"さびききょう", hex:"#695F88", family:"purple" },
+  { id:"n911", name:"二藍", reading:"ふたあい", hex:"#705887", family:"purple" },
+  { id:"n912", name:"茄子紺", reading:"なすこん", hex:"#3B2D48", family:"purple" },
+  { id:"n913", name:"藤鼠", reading:"ふじねず", hex:"#9892A9", family:"purple" },
+  { id:"n914", name:"鳩羽紫", reading:"はとばむらさき", hex:"#6D6981", family:"purple" },
+  { id:"n915", name:"葡萄鼠", reading:"ぶどうねず", hex:"#55505E", family:"purple" },
+  { id:"n916", name:"薄紅紫", reading:"うすべにむらさき", hex:"#DCC9DF", family:"purple" },
+  { id:"n917", name:"ライラック", reading:"らいらっく", hex:"#D0B0CE", family:"purple" },
+  { id:"n918", name:"紅藤", reading:"べにふじ", hex:"#C191C0", family:"purple" },
+  { id:"n919", name:"モーブ", reading:"もーぶ", hex:"#AF6FA2", family:"purple" },
+  { id:"n920", name:"杜若色", reading:"かきつばたいろ", hex:"#8F4889", family:"purple" },
+  { id:"n921", name:"菖蒲色", reading:"そうぶいろ", hex:"#6F4C77", family:"purple" },
+  { id:"n922", name:"半色", reading:"はしたいろ", hex:"#9F7A96", family:"purple" },
+  { id:"n923", name:"若紫", reading:"わかむらさき", hex:"#9E77A1", family:"purple" },
+  { id:"n924", name:"中紫", reading:"なかむらさき", hex:"#846582", family:"purple" },
+  { id:"n925", name:"古代紫", reading:"こだいむらさき", hex:"#6B496A", family:"purple" },
+  { id:"n926", name:"江戸紫", reading:"えどむらさき", hex:"#614667", family:"purple" },
+  { id:"n927", name:"葡萄色", reading:"えびいろ", hex:"#624966", family:"purple" },
+  { id:"n928", name:"桑の実色", reading:"くわのみいろ", hex:"#5A3B58", family:"purple" },
+  { id:"n929", name:"濃紫", reading:"こきむらさき", hex:"#45293E", family:"purple" },
+  { id:"n930", name:"浅紫", reading:"あさむらさき", hex:"#AA91A3", family:"purple" },
+  { id:"n931", name:"灰紫", reading:"はいむらさき", hex:"#7E7682", family:"purple" },
+  { id:"n932", name:"滅紫", reading:"けしむらさき", hex:"#625460", family:"purple" },
+  { id:"n933", name:"黒紫", reading:"くろむらさき", hex:"#39303A", family:"purple" },
+  { id:"n934", name:"牡丹色", reading:"ぼたんいろ", hex:"#B83F87", family:"pink" },
+  { id:"n935", name:"躑躅色", reading:"つつじいろ", hex:"#DC4473", family:"pink" },
+  { id:"n936", name:"マゼンタ", reading:"まぜんた", hex:"#CF3366", family:"pink" },
+  { id:"n937", name:"浜茄子色", reading:"はまなすいろ", hex:"#BA3069", family:"pink" },
+  { id:"n938", name:"苺色", reading:"いちごいろ", hex:"#B11F4F", family:"pink" },
+  { id:"n939", name:"葡萄酒色", reading:"ぶどうしゅいろ", hex:"#8B3D56", family:"pink" },
+  { id:"n940", name:"梅紫", reading:"うめむらさき", hex:"#9F566E", family:"purple" },
+  { id:"n941", name:"プラム", reading:"ぷらむ", hex:"#763D5C", family:"purple" },
+  { id:"n942", name:"紫根色", reading:"しこんいろ", hex:"#604354", family:"purple" },
+  { id:"n943", name:"梅鼠", reading:"うめねず", hex:"#98777E", family:"purple" },
+  { id:"n944", name:"牡丹鼠", reading:"ぼたんねず", hex:"#84646F", family:"purple" },
 
-  /* ---------- 黄 ---------- */
+  /* =====================================================
+     無彩色
+     ===================================================== */
 
-  {
-    id: "yamabuki",
-    name: "山吹色",
-    reading: "やまぶきいろ",
-    hex: "#F8B400",
-    family: "yellow"
-  },
+  { id:"n945", name:"乳白", reading:"にゅうはく", hex:"#EEE3CF", family:"neutral" },
+  { id:"n946", name:"灰白", reading:"はいじろ", hex:"#DEDAD2", family:"neutral" },
+  { id:"n947", name:"銀鼠", reading:"ぎんねず", hex:"#BEBDB9", family:"neutral" },
+  { id:"n948", name:"桜鼠", reading:"さくらねず", hex:"#BAAAA5", family:"neutral" },
+  { id:"n949", name:"深川鼠", reading:"ふかがわねず", hex:"#9CA7AC", family:"neutral" },
+  { id:"n950", name:"灰色", reading:"はいいろ", hex:"#B3A89B", family:"neutral" },
+  { id:"n951", name:"灰汁色", reading:"あくいろ", hex:"#A09588", family:"neutral" },
+  { id:"n952", name:"鈍色", reading:"にびいろ", hex:"#655B50", family:"neutral" },
+  { id:"n953", name:"利休鼠", reading:"りきゅうねず", hex:"#869084", family:"neutral" },
+  { id:"n954", name:"素鼠", reading:"すねず", hex:"#6D7072", family:"neutral" },
+  { id:"n955", name:"鉛色", reading:"なまりいろ", hex:"#5A636E", family:"neutral" },
+  { id:"n956", name:"鳩羽鼠", reading:"はとばねず", hex:"#847F87", family:"neutral" },
+  { id:"n957", name:"石板色", reading:"せきばんいろ", hex:"#4E5255", family:"neutral" },
+  { id:"n958", name:"消炭色", reading:"けしずみいろ", hex:"#393C41", family:"neutral" },
+  { id:"n959", name:"涅色", reading:"くりいろ", hex:"#433634", family:"neutral" },
+  { id:"n960", name:"墨色", reading:"すみいろ", hex:"#2E2F31", family:"neutral" },
 
-  {
-    id: "ukon",
-    name: "鬱金色",
-    reading: "うこんいろ",
-    hex: "#E69B00",
-    family: "yellow"
-  },
+  /* =====================================================
+     その他の伝統色
+     ===================================================== */
 
-  {
-    id: "karashi",
-    name: "芥子色",
-    reading: "からしいろ",
-    hex: "#D0AF4C",
-    family: "yellow"
-  },
-
-  {
-    id: "kogane",
-    name: "黄金色",
-    reading: "こがねいろ",
-    hex: "#E6B422",
-    family: "yellow"
-  },
-
-  {
-    id: "kikuchibairo",
-    name: "黄朽葉色",
-    reading: "きくちばいろ",
-    hex: "#D3A243",
-    family: "yellow"
-  },
-
-  /* ---------- 緑 ---------- */
-
-  {
-    id: "moegi",
-    name: "萌黄色",
-    reading: "もえぎいろ",
-    hex: "#A9D159",
-    family: "green"
-  },
-
-  {
-    id: "wakakusa",
-    name: "若草色",
-    reading: "わかくさいろ",
-    hex: "#A8C97F",
-    family: "green"
-  },
-
-  {
-    id: "hisui",
-    name: "翡翠色",
-    reading: "ひすいいろ",
-    hex: "#38B48B",
-    family: "green"
-  },
-
-  {
-    id: "rokusho",
-    name: "緑青色",
-    reading: "ろくしょういろ",
-    hex: "#47885E",
-    family: "green"
-  },
-
-  {
-    id: "matsubairo",
-    name: "松葉色",
-    reading: "まつばいろ",
-    hex: "#839B5C",
-    family: "green"
-  },
-
-  /* ---------- 青 ---------- */
-
-  {
-    id: "ai",
-    name: "藍色",
-    reading: "あいいろ",
-    hex: "#165E83",
-    family: "blue"
-  },
-
-  {
-    id: "kon",
-    name: "紺色",
-    reading: "こんいろ",
-    hex: "#1C305C",
-    family: "blue"
-  },
-
-  {
-    id: "hanada",
-    name: "縹色",
-    reading: "はなだいろ",
-    hex: "#006284",
-    family: "blue"
-  },
-
-  {
-    id: "gunjo",
-    name: "群青色",
-    reading: "ぐんじょういろ",
-    hex: "#465DAA",
-    family: "blue"
-  },
-
-  /* ---------- 水色 ---------- */
-
-  {
-    id: "asagi",
-    name: "浅葱色",
-    reading: "あさぎいろ",
-    hex: "#00A3AF",
-    family: "cyan"
-  },
-
-  {
-    id: "mizuasagi",
-    name: "水浅葱",
-    reading: "みずあさぎ",
-    hex: "#80ABA9",
-    family: "cyan"
-  },
-
-  {
-    id: "sora",
-    name: "空色",
-    reading: "そらいろ",
-    hex: "#A0D8EF",
-    family: "cyan"
-  },
-
-  /* ---------- 紫 ---------- */
-
-  {
-    id: "fuji",
-    name: "藤色",
-    reading: "ふじいろ",
-    hex: "#AFB4DB",
-    family: "purple"
-  },
-
-  {
-    id: "kodai",
-    name: "古代紫",
-    reading: "こだいむらさき",
-    hex: "#895B8A",
-    family: "purple"
-  },
-
-  {
-    id: "nasukon",
-    name: "茄子紺",
-    reading: "なすこん",
-    hex: "#824880",
-    family: "purple"
-  },
-
-  {
-    id: "kyo",
-    name: "京紫",
-    reading: "きょうむらさき",
-    hex: "#9D5B8B",
-    family: "purple"
-  },
-
-  /* ---------- 茶 ---------- */
-
-  {
-    id: "azuki",
-    name: "小豆色",
-    reading: "あずきいろ",
-    hex: "#96514D",
-    family: "brown"
-  },
-
-  {
-    id: "karacha",
-    name: "枯茶",
-    reading: "からちゃ",
-    hex: "#8D6449",
-    family: "brown"
-  },
-
-  {
-    id: "tsuchi",
-    name: "土色",
-    reading: "つちいろ",
-    hex: "#BC763C",
-    family: "brown"
-  },
-
-  {
-    id: "ame",
-    name: "飴色",
-    reading: "あめいろ",
-    hex: "#DEB068",
-    family: "brown"
-  },
-
-  /* ---------- 無彩色 ---------- */
-
-  {
-    id: "nezumi",
-    name: "鼠色",
-    reading: "ねずみいろ",
-    hex: "#949495",
-    family: "neutral"
-  }
+  { id:"n961", name:"朱華", reading:"はねず", hex:"#D58D77", family:"orange" },
+  { id:"n962", name:"橡", reading:"つるばみ", hex:"#9C6351", family:"brown" },
+  { id:"n963", name:"唐茶", reading:"からちゃ", hex:"#916640", family:"brown" },
+  { id:"n964", name:"木蘭色", reading:"もくらんじき", hex:"#A68F49", family:"yellow" },
+  { id:"n965", name:"紫苑", reading:"しおん", hex:"#7B6980", family:"purple" },
+  { id:"n966", name:"錆朱", reading:"さびしゅ", hex:"#92464D", family:"red" },
+  { id:"n967", name:"一斤染", reading:"いっこんぞめ", hex:"#F9C9C8", family:"pink" },
+  { id:"n968", name:"退紅", reading:"たいこう", hex:"#CB9488", family:"pink" },
+  { id:"n969", name:"赤蘇芳", reading:"あかすおう", hex:"#CA4E50", family:"red" },
+  { id:"n970", name:"紅樺色", reading:"べにかばいろ", hex:"#A3473D", family:"red" },
+  { id:"n971", name:"真朱", reading:"しんしゅ", hex:"#C4655C", family:"red" },
+  { id:"n972", name:"紅緋", reading:"べにひ", hex:"#ED4F44", family:"red" },
+  { id:"n973", name:"土器色", reading:"かわらけいろ", hex:"#CF8D7A", family:"orange" },
+  { id:"n974", name:"赤支子", reading:"あかくちなし", hex:"#CD8462", family:"orange" },
+  { id:"n975", name:"木枯茶", reading:"こがれちゃ", hex:"#795B47", family:"brown" },
+  { id:"n976", name:"銀煤竹", reading:"ぎんすすたけ", hex:"#86674F", family:"brown" },
+  { id:"n977", name:"赤白橡", reading:"あかしろつるばみ", hex:"#F5C39F", family:"orange" },
+  { id:"n978", name:"穴色", reading:"ししいろ", hex:"#F8CDAB", family:"orange" },
+  { id:"n979", name:"梅茶", reading:"うめちゃ", hex:"#9B7652", family:"brown" },
+  { id:"n980", name:"文人茶", reading:"ぶんじんちゃ", hex:"#5E4C46", family:"brown" },
+  { id:"n981", name:"胡桃色", reading:"くるみいろ", hex:"#AC8E69", family:"brown" },
+  { id:"n982", name:"媚茶", reading:"こびちゃ", hex:"#917C5E", family:"brown" },
+  { id:"n983", name:"璃寛茶", reading:"りかんちゃ", hex:"#65523C", family:"brown" },
+  { id:"n984", name:"桑染", reading:"くわぞめ", hex:"#C3A980", family:"brown" },
+  { id:"n985", name:"路考茶", reading:"ろこうちゃ", hex:"#8F7244", family:"brown" },
+  { id:"n986", name:"黄朽葉", reading:"きくちば", hex:"#BB9E4B", family:"yellow" },
+  { id:"n987", name:"根岸色", reading:"ねぎしいろ", hex:"#807F69", family:"green" },
+  { id:"n988", name:"青朽葉", reading:"あおくちば", hex:"#BDB065", family:"yellow" },
+  { id:"n989", name:"青白橡", reading:"あおしろつるばみ", hex:"#BFBA92", family:"green" },
+  { id:"n990", name:"威光茶", reading:"いこうちゃ", hex:"#969C63", family:"green" },
+  { id:"n991", name:"麹塵", reading:"きくじん", hex:"#7D8161", family:"green" },
+  { id:"n992", name:"山藍摺", reading:"やまあいずり", hex:"#567970", family:"green" },
+  { id:"n993", name:"水縹", reading:"みずはなだ", hex:"#B4C7BB", family:"cyan" },
+  { id:"n994", name:"中縹", reading:"なかはなだ", hex:"#396375", family:"blue" },
+  { id:"n995", name:"瓶覗", reading:"かめのぞき", hex:"#88BABD", family:"cyan" },
+  { id:"n996", name:"熨斗目色", reading:"のしめいろ", hex:"#16637D", family:"blue" },
+  { id:"n997", name:"青鈍", reading:"あおにび", hex:"#334454", family:"blue" },
+  { id:"n998", name:"楝", reading:"おうち", hex:"#8A7AA8", family:"purple" },
+  { id:"n999", name:"薄色", reading:"うすいろ", hex:"#AFA0A5", family:"purple" },
+  { id:"n1000", name:"濃色", reading:"こいろ", hex:"#593A40", family:"purple" }
 
 ];
-
 
 /* =====================================================
    ランク
