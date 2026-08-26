@@ -887,7 +887,6 @@ const RANKS = [
   }
 ];
 
-
 /* =====================================================
    状態
    ===================================================== */
@@ -1281,25 +1280,21 @@ function createKanshikiQuestion() {
 
 function currentRank() {
 
-  let rank =
-    RANKS[0];
+  let rank = RANKS[0];
 
+  const discoveredCount =
+    state.discovered.size;
 
-  for (
-    const candidate of RANKS
-  ) {
+  for (const candidate of RANKS) {
 
     if (
-      state.correctAnswers >=
+      discoveredCount >=
       candidate.required
     ) {
-
       rank = candidate;
-
     }
 
   }
-
 
   return rank;
 
