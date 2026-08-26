@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>四季彩</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f8f5ef;
+      color: #292622;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        sans-serif;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .app {
+      width: min(100%, 760px);
+      min-height: 100vh;
+      margin: auto;
+      padding: 24px 18px 40px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .title {
+      font-family: serif;
+      font-size: 38px;
+      letter-spacing: .18em;
+      margin: 0;
+    }
+
+    .subtitle {
+      color: #81796d;
+      margin-top: 8px;
+      font-size: 13px;
+    }
+
+    .rank {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 5px 13px;
+      border-radius: 999px;
+      background: #292622;
+      color: white;
+      font-size: 13px;
+    }
+
+    .menu {
+      display: grid;
+      gap: 12px;
+    }
+
+    .menu-button {
+      width: 100%;
+      padding: 20px;
+      border: 1px solid #ddd6cb;
+      border-radius: 18px;
+      background: white;
+      text-align: left;
+      cursor: pointer;
+      transition: transform .15s, box-shadow .15s;
+    }
+
+    .menu-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,.07);
+    }
+
+    .menu-name {
+      display: block;
+      font-family: serif;
+      font-size: 24px;
+    }
+
+    .menu-reading {
+      display: block;
+      margin-top: 4px;
+      color: #928a7f;
+      font-size: 12px;
+    }
+
+    .menu-description {
+      display: block;
+      margin-top: 10px;
+      color: #5d574f;
+      font-size: 14px;
+    }
+
+    .secondary {
+      width: 100%;
+      margin-top: 12px;
+      padding: 16px;
+      border: 1px solid #ddd6cb;
+      border-radius: 18px;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .screen-title {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .screen-title h2 {
+      font-family: serif;
+      font-size: 30px;
+      margin: 0;
+    }
+
+    .screen-title p {
+      color: #8b8378;
+      margin: 6px 0 0;
+    }
+
+    .back {
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      color: #71695f;
+      margin-bottom: 16px;
+    }
+
+    .question {
+      background: white;
+      border-radius: 24px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,.05);
+    }
+
+    .question-label {
+      color: #81796d;
+      font-size: 14px;
+    }
+
+    .color-name {
+      font-family: serif;
+      font-size: 28px;
+      margin: 8px 0 18px;
+    }
+
+    .choices {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .choice {
+      height: 125px;
+      border: 4px solid white;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 3px 12px rgba(0,0,0,.12);
+    }
+
+    .choice:hover {
+      transform: scale(1.02);
+    }
+
+    .result {
+      min-height: 30px;
+      text-align: center;
+      margin-top: 18px;
+      font-weight: bold;
+    }
+
+    .result.correct {
+      color: #4f6948;
+    }
+
+    .result.wrong {
+      color: #98584f;
+    }
+
+    .next {
+      display: block;
+      margin: 12px auto 0;
+      padding: 11px 25px;
+      border: 0;
+      border-radius: 999px;
+      background: #292622;
+      color: white;
+      cursor: pointer;
+    }
+
+    .dictionary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .color-card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 3px 12px rgba(0,0,0,.05);
+    }
+
+    .color-sample {
+      height: 130px;
+    }
+
+    .color-info {
+      padding: 13px;
+    }
+
+    .color-info strong {
+      font-family: serif;
+      font-size: 17px;
+    }
+
+    .color-info small {
+      display: block;
+      margin-top: 4px;
+      color: #8b8378;
+    }
+
+    .locked {
+      filter: grayscale(1);
+      opacity: .5;
+    }
+
+    .tutorial {
+      background: white;
+      border-radius: 24px;
+      padding: 28px;
+      line-height: 1.9;
+    }
+
+    .tutorial-color {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin: 24px auto;
+    }
+
+    .primary {
+      display: block;
+      margin: 24px auto 0;
+      padding: 13px 30px;
+      border: 0;
+      border-radius: 999px;
+      background: #292622;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media (max-width: 480px) {
+      .choice {
+        height: 105px;
+      }
+
+      .dictionary {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="app"></div>
+
+<script>
+/* =========================================
+   色データ
+========================================= */
+
+const colors = [
+  {
+    id: "yamabuki",
+    name: "山吹色",
+    reading: "やまぶきいろ",
+    hex: "#F8B500",
+    family: "yellow"
+  },
+  {
+    id: "ai",
+    name: "藍色",
+    reading: "あいいろ",
+    hex: "#165E83",
+    family: "blue"
+  },
+  {
+    id: "akane",
+    name: "茜色",
+    reading: "あかねいろ",
+    hex: "#B7282E",
+    family: "red"
+  },
+  {
+    id: "moegi",
+    name: "萌黄色",
+    reading: "もえぎいろ",
+    hex: "#C3D825",
+    family: "green"
+  },
+
+  /* 鑑色用：同系色 */
+
+  {
+    id: "yamabuki-light",
+    name: "山吹色",
+    reading: "やまぶきいろ",
+    hex: "#F8B500",
+    family: "yellow"
+  },
+  {
+    id: "karashi",
+    name: "芥子色",
+    reading: "からしいろ",
+    hex: "#D8A600",
+    family: "yellow"
+  },
+  {
+    id: "kikuchibairo",
+    name: "黄朽葉色",
+    reading: "きくちばいろ",
+    hex: "#D3A243",
+    family: "yellow"
+  },
+  {
+    id: "ukon",
+    name: "鬱金色",
+    reading: "うこんいろ",
+    hex: "#E69B00",
+    family: "yellow"
+  }
+];
+
+
+/* =========================================
+   状態
+========================================= */
+
+let currentScreen = "home";
+let currentMode = null;
+
+let currentQuestion = null;
+let currentChoices = [];
+
+let answered = false;
+let correct = false;
+
+let discovered = new Set();
+
+let rankIndex = 0;
+
+const ranks = [
+  "無色",
+  "常色",
+  "良色",
+  "博色",
+  "有色者",
+  "色神"
+];
+
+
+/* =========================================
+   ユーティリティ
+========================================= */
+
+function getColor(id) {
+  return colors.find(c => c.id === id);
+}
+
+function shuffle(array) {
+  return [...array].sort(() => Math.random() - 0.5);
+}
+
+
+/* =========================================
+   色別
+   系統の違う色から選ぶ
+========================================= */
+
+function createShikibetsuQuestion() {
+
+  const questionPool = [
+    getColor("yamabuki"),
+    getColor("ai"),
+    getColor("akane"),
+    getColor("moegi")
+  ];
+
+  currentQuestion =
+    questionPool[Math.floor(Math.random() * questionPool.length)];
+
+  currentChoices = shuffle(questionPool);
+}
+
+
+/* =========================================
+   鑑色
+   同系統の色から選ぶ
+========================================= */
+
+function createKanshikiQuestion() {
+
+  const yellowColors = [
+    getColor("yamabuki-light"),
+    getColor("karashi"),
+    getColor("kikuchibairo"),
+    getColor("ukon")
+  ];
+
+  currentQuestion = yellowColors[0];
+
+  currentChoices = shuffle(yellowColors);
+}
+
+
+/* =========================================
+   画面
+========================================= */
+
+function render() {
+
+  const app = document.getElementById("app");
+
+  if (currentScreen === "home") {
+    renderHome(app);
+    return;
+  }
+
+  if (currentScreen === "tutorial") {
+    renderTutorial(app);
+    return;
+  }
+
+  if (currentScreen === "dictionary") {
+    renderDictionary(app);
+    return;
+  }
+
+  if (currentScreen === "quiz") {
+    renderQuiz(app);
+    return;
+  }
+}
+
+
+/* =========================================
+   ホーム
+========================================= */
+
+function renderHome(app) {
+
+  app.innerHTML = `
+    <main class="app">
+
+      <header>
+        <h1 class="title">四季彩</h1>
+        <div class="subtitle">
+          色を知り、色を識る。
+        </div>
+
+        <div class="rank">
+          ${ranks[rankIndex]}
+        </div>
+      </header>
+
+      <section class="menu">
+
+        <button class="menu-button"
+          onclick="startTutorial()">
+
+          <span class="menu-name">
+            入学色
+          </span>
+
+          <span class="menu-reading">
+            にゅうがくしき
+          </span>
+
+          <span class="menu-description">
+            四季彩の遊び方を知る
+          </span>
+
+        </button>
+
+
+        <button class="menu-button"
+          onclick="startQuiz('shikibetsu')">
+
+          <span class="menu-name">
+            色別
+          </span>
+
+          <span class="menu-reading">
+            しきべつ
+          </span>
+
+          <span class="menu-description">
+            系統の違う色から選ぶ
+          </span>
+
+        </button>
+
+
+        <button class="menu-button"
+          onclick="startQuiz('kanshiki')">
+
+          <span class="menu-name">
+            鑑色
+          </span>
+
+          <span class="menu-reading">
+            かんしき
+          </span>
+
+          <span class="menu-description">
+            同系色の中から見極める
+          </span>
+
+        </button>
+
+      </section>
+
+
+      <button class="secondary"
+        onclick="openDictionary()">
+
+        知色（ちしき）
+       　色図鑑
+
+      </button>
+
+    </main>
+  `;
+}
+
+
+/* =========================================
+   チュートリアル
+========================================= */
+
+function renderTutorial(app) {
+
+  app.innerHTML = `
+    <main class="app">
+
+      <button class="back"
+        onclick="goHome()">
+        ← 戻る
+      </button>
+
+      <div class="screen-title">
+        <h2>入学色</h2>
+        <p>にゅうがくしき</p>
+      </div>
+
+      <section class="tutorial">
+
+        <h3>四季彩へようこそ。</h3>
+
+        <p>
+          色の名前を見て、
+          その色だと思う色をタップしてください。
+        </p>
+
+        <div
+          class="tutorial-color"
+          style="background:#F8B500">
+        </div>
+
+        <p style="text-align:center">
+          これは <strong>山吹色</strong>。
+        </p>
+
+        <p>
+          色別では系統の違う色から、
+          鑑色では同系色の微妙な違いから
+          答えを探します。
+        </p>
+
+        <button class="primary"
+          onclick="goHome()">
+          はじめる
+        </button>
+
+      </section>
+
+    </main>
+  `;
+}
+
+
+/* =========================================
+   クイズ
+========================================= */
+
+function startQuiz(mode) {
+
+  currentMode = mode;
+
+  if (mode === "shikibetsu") {
+    createShikibetsuQuestion();
+  }
+
+  if (mode === "kanshiki") {
+    createKanshikiQuestion();
+  }
+
+  answered = false;
+  correct = false;
+
+  currentScreen = "quiz";
+
+  render();
+}
+
+
+function renderQuiz(app) {
+
+  const modeName =
+    currentMode === "shikibetsu"
+      ? "色別"
+      : "鑑色";
+
+  app.innerHTML = `
+    <main class="app">
+
+      <button class="back"
+        onclick="goHome()">
+        ← 戻る
+      </button>
+
+      <div class="screen-title">
+        <h2>${modeName}</h2>
+        <p>
+          ${currentMode === "shikibetsu"
+            ? "系統の違う色から選ぶ"
+            : "同系色から見極める"}
+        </p>
+      </div>
+
+
+      <section class="question">
+
+        <div class="question-label">
+          この色は何色？
+        </div>
+
+        <div class="color-name">
+          ${currentQuestion.name}
+        </div>
+
+      </section>
+
+
+      <div class="choices">
+
+        ${currentChoices.map((color, index) => `
+
+          <button
+            class="choice"
+            style="background:${color.hex}"
+            onclick="answer('${color.id}')"
+            aria-label="選択肢 ${index + 1}">
+          </button>
+
+        `).join("")}
+
+      </div>
+
+
+      <div
+        id="result"
+        class="result
+          ${answered
+            ? correct
+              ? "correct"
+              : "wrong"
+            : ""}">
+
+        ${answered
+          ? correct
+            ? "正解"
+            : "不正解"
+          : ""}
+
+      </div>
+
+
+      ${answered ? `
+
+        <button class="next"
+          onclick="nextQuestion()">
+          次の問題
+        </button>
+
+      ` : ""}
+
+    </main>
+  `;
+}
+
+
+/* =========================================
+   回答
+========================================= */
+
+function answer(id) {
+
+  if (answered) return;
+
+  answered = true;
+
+  const selected = getColor(id);
+
+  correct =
+    selected.hex === currentQuestion.hex;
+
+  if (correct) {
+
+    discovered.add(currentQuestion.name);
+
+    /*
+      仮のランクアップ処理。
+      本番では正答数・連続正解などに変更する。
+    */
+
+    if (discovered.size >= 3) {
+      rankIndex = Math.min(
+        rankIndex + 1,
+        ranks.length - 1
+      );
+    }
+  }
+
+  render();
+}
+
+
+/* =========================================
+   次の問題
+========================================= */
+
+function nextQuestion() {
+
+  if (currentMode === "shikibetsu") {
+    createShikibetsuQuestion();
+  }
+
+  if (currentMode === "kanshiki") {
+    createKanshikiQuestion();
+  }
+
+  answered = false;
+  correct = false;
+
+  render();
+}
+
+
+/* =========================================
+   知色
+========================================= */
+
+function openDictionary() {
+
+  currentScreen = "dictionary";
+
+  render();
+}
+
+
+function renderDictionary(app) {
+
+  app.innerHTML = `
+    <main class="app">
+
+      <button class="back"
+        onclick="goHome()">
+        ← 戻る
+      </button>
+
+      <div class="screen-title">
+        <h2>知色</h2>
+        <p>ちしき　— 色図鑑 —</p>
+      </div>
+
+      <section class="dictionary">
+
+        ${colors
+          .filter((color, index, self) =>
+            self.findIndex(c => c.name === color.name) === index
+          )
+          .map(color => {
+
+            const isKnown =
+              discovered.has(color.name);
+
+            return `
+
+              <article
+                class="color-card
+                  ${isKnown ? "" : "locked"}">
+
+                <div
+                  class="color-sample"
+                  style="background:${color.hex}">
+                </div>
+
+                <div class="color-info">
+
+                  <strong>
+                    ${isKnown ? color.name : "？？？"}
+                  </strong>
+
+                  <small>
+                    ${isKnown
+                      ? color.reading
+                      : "未発見"}
+                  </small>
+
+                </div>
+
+              </article>
+
+            `;
+          }).join("")}
+
+      </section>
+
+    </main>
+  `;
+}
+
+
+/* =========================================
+   戻る
+========================================= */
+
+function goHome() {
+
+  currentScreen = "home";
+  render();
+}
+
+
+function startTutorial() {
+
+  currentScreen = "tutorial";
+  render();
+}
+
+
+/* =========================================
+   起動
+========================================= */
+
+render();
+
+</script>
+
+</body>
+</html>
