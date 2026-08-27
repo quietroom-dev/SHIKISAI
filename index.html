@@ -1420,6 +1420,7 @@ function createKanshikiQuestion() {
   );
 
 
+  // 4色以上ある系統だけを対象にする
   const validFamilies =
     Object.keys(groups)
       .filter(
@@ -1428,34 +1429,68 @@ function createKanshikiQuestion() {
       );
 
 
-  let targetFamily;
+  if (
+    validFamilies.length === 0
+  ) {
+
+    return;
+
+  }
 
 
-  if (validFamilies.length > 0) {
+  // まず系統を決める
+  const targetFamily =
+    validFamilies[
+      Math.floor(
+        Math.random() *
+        validFamilies.length
+      )
+    ];
 
-    targetFamily =
-      validFamilies[
+
+  // その系統の色だけから正解を選ぶ
+  const familyColors =
+    groups[targetFamily];
+
+
+  const undiscovered =
+    familyColors.filter(
+      color =>
+        !state.discovered.has(color.id)
+    );
+
+
+  let target;
+
+
+  // 未発見色があれば80%の確率で優先
+  if (
+    undiscovered.length > 0 &&
+    Math.random() < 0.8
+  ) {
+
+    target =
+      undiscovered[
         Math.floor(
           Math.random() *
-          validFamilies.length
+          undiscovered.length
         )
       ];
 
   } else {
 
-    targetFamily =
-      COLORS[0].family;
+    target =
+      familyColors[
+        Math.floor(
+          Math.random() *
+          familyColors.length
+        )
+      ];
 
   }
 
 
-  const familyColors =
-    groups[targetFamily];
-
-
-  const target = randomTargetColor();
-
-
+  // 正解と同じ系統の色だけから選択肢を作る
   const candidates =
     familyColors
 
@@ -1487,17 +1522,16 @@ function createKanshikiQuestion() {
 
   const wrongChoices =
     candidates
-      .slice(
-        0,
-        3
-      )
+      .slice(0, 3)
       .map(
         item =>
           item.color
       );
 
 
-  state.question = target;
+  state.question =
+    target;
+
 
   state.choices =
     shuffle([
@@ -1506,8 +1540,7 @@ function createKanshikiQuestion() {
     ]);
 
 }
-
-
+  
 /* =====================================================
    ランク
    ===================================================== */
