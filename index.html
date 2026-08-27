@@ -2287,6 +2287,7 @@ function nextQuestion() {
    ランク一覧
    ===================================================== */
 
+```javascript
 function openRanks() {
 
   state.screen = "ranks";
@@ -2343,6 +2344,20 @@ function renderRanks() {
                 current.name;
 
 
+              /*
+                未獲得の称号は
+                「色」だけ表示する。
+              */
+
+              const displayName =
+  reached
+    ? rank.name
+    : rank.name.replace(
+        /[^色]/g,
+        "◯"
+      );
+
+
               return `
 
                 <div
@@ -2363,7 +2378,8 @@ function renderRanks() {
                   <div>
 
                     <div class="rank-item-name">
-                      ${rank.name}
+
+                      ${displayName}
 
                       ${
                         isCurrent
@@ -2381,9 +2397,15 @@ function renderRanks() {
                     </div>
 
 
-                    <div class="rank-item-reading">
-                      ${rank.reading}
-                    </div>
+                    ${
+                      reached
+                        ? `
+                          <div class="rank-item-reading">
+                            ${rank.reading}
+                          </div>
+                        `
+                        : ""
+                    }
 
                   </div>
 
@@ -2423,6 +2445,8 @@ function renderRanks() {
     `;
 
 }
+```
+
 /* =====================================================
    知色
    ===================================================== */
