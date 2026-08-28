@@ -1751,40 +1751,37 @@ function renderHome() {
             色を知り、色を感じる。
           </div>
 
+<button
+  class="rank-badge"
+  onclick="openRanks()">
 
-<div class="rank-section">
-
-  <div class="rank-label">
+  <span class="rank-label">
     現在の称号
-  </div>
+  </span>
 
-  <button
-    class="rank-badge"
-    onclick="openRanks()">
+  <span class="rank-name">
+    ${rank.name}
+  </span>
 
-    <span class="rank-name">
-      ${rank.name}
-    </span>
+  <span class="rank-reading">
+    ${rank.reading}
+  </span>
 
-    <span class="rank-reading">
-      ${rank.reading}
-    </span>
+  ${
+    nextRank
+      ? `
+        <span class="rank-next">
+          次の称号まで あと${remaining}色
+        </span>
+      `
+      : `
+        <span class="rank-next">
+          すべての色を発見
+        </span>
+      `
+  }
 
-    ${
-      nextRank
-        ? `
-          <span class="rank-next">
-            次の称号まで あと${remaining}色
-          </span>
-        `
-        : `
-          <span class="rank-next">
-            すべての色を発見
-          </span>
-        `
-    }
-
-  </button>
+</button>
 
   <div class="rank-hint">
     タップして称号一覧を見る
