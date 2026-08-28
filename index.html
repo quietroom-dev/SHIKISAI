@@ -684,6 +684,42 @@
   }
 
 }
+.rank-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+
+  margin-top: 14px;
+  padding: 12px 24px;
+
+  border: 0;
+  border-radius: 18px;
+
+  background: #292622;
+  color: #fff;
+
+  cursor: pointer;
+}
+
+.rank-name {
+  font-family: serif;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.rank-reading {
+  margin-top: 1px;
+  color: #c8c1b8;
+  font-size: 11px;
+}
+
+.rank-next {
+  margin-top: 7px;
+  color: #aaa39a;
+  font-size: 10px;
+  letter-spacing: .04em;
+}
   </style>
 </head>
 
@@ -1675,6 +1711,22 @@ function renderHome() {
 
   const rank = currentRank();
 
+  // 現在の称号の次にある称号を取得
+  const currentIndex =
+    RANKS.findIndex(
+      candidate =>
+        candidate.name === rank.name
+    );
+
+  const nextRank =
+    RANKS[currentIndex + 1];
+
+  // 次の称号までの残り色数
+  const remaining =
+    nextRank
+      ? nextRank.required - state.discovered.size
+      : 0;
+
   document.getElementById("app")
     .innerHTML = `
 
@@ -1700,32 +1752,45 @@ function renderHome() {
           </div>
 
 
-          <div class="rank-section">
+<div class="rank-section">
 
-            <div class="rank-label">
-              現在の称号
-            </div>
+  <div class="rank-label">
+    現在の称号
+  </div>
 
+  <button
+    class="rank-badge"
+    onclick="openRanks()">
 
-            <button
-              class="rank-badge"
-              onclick="openRanks()">
+    <span class="rank-name">
+      ${rank.name}
+    </span>
 
-              ${rank.name}
+    <span class="rank-reading">
+      ${rank.reading}
+    </span>
 
-            </button>
+    ${
+      nextRank
+        ? `
+          <span class="rank-next">
+            次の称号まで あと${remaining}色
+          </span>
+        `
+        : `
+          <span class="rank-next">
+            すべての色を発見
+          </span>
+        `
+    }
 
+  </button>
 
-            <div class="rank-reading">
-              ${rank.reading}
-            </div>
+  <div class="rank-hint">
+    タップして称号一覧を見る
+  </div>
 
-
-            <div class="rank-hint">
-              タップして称号一覧を見る
-            </div>
-
-          </div>
+</div>
 
         </header>
 
