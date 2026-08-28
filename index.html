@@ -445,72 +445,48 @@
 }
 
 .rank-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+
+  margin-top: 14px;
+  padding: 13px 28px;
+
+  border: 1px solid #ded7cc;
+  border-radius: 18px;
+
+  background: #fff;
+  color: #292622;
+
   cursor: pointer;
+
+  box-shadow: 0 3px 13px rgba(0,0,0,.045);
+  transition: .15s ease;
+}
+
+.rank-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 20px rgba(0,0,0,.06);
+}
+
+.rank-name {
+  font-family: serif;
+  font-size: 24px;
+  line-height: 1.2;
 }
 
 .rank-reading {
-  margin-top: 3px;
+  margin-top: 1px;
   color: #8c8479;
   font-size: 11px;
 }
 
-.rank-hint {
-  margin-top: 5px;
-  color: #aaa298;
-  font-size: 10px;
-}
-
-.rank-list {
-  display: grid;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.rank-item {
-  display: flex;
-  align-items: center;
-  padding: 15px 17px;
-  border: 1px solid #ded7cc;
-  border-radius: 16px;
-  background: #fff;
-}
-
-.rank-item.current {
-  border-color: #292622;
-  box-shadow: 0 4px 14px rgba(0,0,0,.06);
-}
-
-.rank-item.locked {
-  opacity: .45;
-}
-
-.rank-item-name {
-  font-family: serif;
-  font-size: 19px;
-}
-
-.rank-item-reading {
-  margin-left: 8px;
-  color: #8c8479;
-  font-size: 11px;
-}
-
-.rank-item-required {
-  margin-left: auto;
-  color: #81796e;
-  font-size: 11px;
-}
-
-.rank-current {
-  margin-left: 8px;
-  font-size: 10px;
-}
-
-.rank-item-description {
+.rank-next {
   margin-top: 7px;
-  color: #625c54;
-  font-size: 12px;
-  line-height: 1.6;
+  color: #81796e;
+  font-size: 10px;
+  letter-spacing: .04em;
 }
 
 /* ---------- footer advertisement ---------- */
