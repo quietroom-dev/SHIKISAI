@@ -506,6 +506,13 @@
   font-size: 10px;
 }
 
+.rank-item-description {
+  margin-top: 7px;
+  color: #625c54;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
 /* ---------- footer advertisement ---------- */
 
 .footer-ad {
@@ -1073,32 +1080,44 @@ const RANKS = [
   {
     name: "無色",
     reading: "むしょく",
-    required: 0
+    required: 0,
+    description:
+      "まだ何色にも染まっていない、四季彩の始まり。"
   },
   {
     name: "常色",
     reading: "じょうしき",
-    required: 10
+    required: 10,
+    description:
+      "身近な色を知り、色の世界に足を踏み入れた証。"
   },
   {
     name: "良色",
     reading: "りょうしき",
-    required: 30
+    required: 30,
+    description:
+      "さまざまな色の良さを知る者。"
   },
   {
     name: "博色",
     reading: "はくしき",
-    required: 70
+    required: 70,
+    description:
+      "幅広い色を知り、色の世界を深く知る者。"
   },
   {
     name: "有色者",
     reading: "ゆうしきしゃ",
-    required: 150
+    required: 150,
+    description:
+      "多くの色を知り、色を語れる者。"
   },
   {
     name: "色神",
     reading: "しきがみ",
-    required: 300
+    required: 300,
+    description:
+      "すべての色を知り尽くした、色の神。"
   }
 ];
 
@@ -2344,17 +2363,17 @@ function renderRanks() {
 
 
               /*
-                未獲得の称号は
-                「色」だけ表示する。
+                未獲得の場合は
+                「色」だけ残して表示する。
               */
 
               const displayName =
-  reached
-    ? rank.name
-    : rank.name.replace(
-        /[^色]/g,
-        "◯"
-      );
+                reached
+                  ? rank.name
+                  : rank.name.replace(
+                      /[^色]/g,
+                      "？"
+                    );
 
 
               return `
@@ -2373,6 +2392,7 @@ function renderRanks() {
                         : ""
                     }
                   ">
+
 
                   <div>
 
@@ -2399,9 +2419,22 @@ function renderRanks() {
                     ${
                       reached
                         ? `
-                          <div class="rank-item-reading">
+
+                          <div
+                            class="rank-item-reading">
+
                             ${rank.reading}
+
                           </div>
+
+
+                          <div
+                            class="rank-item-description">
+
+                            ${rank.description}
+
+                          </div>
+
                         `
                         : ""
                     }
@@ -2432,9 +2465,9 @@ function renderRanks() {
           </div>
 
           <div class="stats-number">
-            ${
-              state.discovered.size
-            }
+
+            ${state.discovered.size}
+
           </div>
 
         </section>
