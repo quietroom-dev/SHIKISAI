@@ -720,6 +720,245 @@
 
 }
 
+/* =====================================================
+   背景設定
+   ===================================================== */
+
+.background-screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+/* ---------- プレビュー ---------- */
+
+.background-preview {
+  flex: 0 0 auto;
+  margin-bottom: 14px;
+}
+
+.background-preview-inner {
+  height: 145px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #ded7cc;
+  border-radius: 22px;
+
+  box-shadow:
+    0 4px 16px rgba(0,0,0,.05);
+
+  overflow: hidden;
+}
+
+.background-preview-title {
+  font-family: serif;
+  font-size: 29px;
+  letter-spacing: .14em;
+}
+
+.background-preview-subtitle {
+  margin-top: 5px;
+  color: #625c54;
+  font-size: 11px;
+}
+
+
+/* ---------- スタイル ---------- */
+
+.background-styles {
+  flex: 0 0 auto;
+
+  display: grid;
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 7px;
+}
+
+.background-style-button {
+  min-height: 42px;
+
+  padding: 6px 4px;
+
+  border: 1px solid #ded7cc;
+  border-radius: 12px;
+
+  background: #fff;
+  color: #625c54;
+
+  font-size: 11px;
+
+  cursor: pointer;
+
+  transition: .15s ease;
+}
+
+.background-style-button.selected {
+  border-color: #292622;
+  color: #292622;
+
+  box-shadow:
+    0 3px 10px rgba(0,0,0,.06);
+}
+
+
+/* ---------- 説明 ---------- */
+
+.background-instruction {
+  flex: 0 0 auto;
+
+  margin-top: 13px;
+
+  text-align: center;
+
+  color: #81796e;
+  font-size: 11px;
+}
+
+.background-selected {
+  flex: 0 0 auto;
+
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+
+  margin-top: 7px;
+
+  color: #625c54;
+  font-size: 11px;
+}
+
+
+/* ---------- 色一覧 ---------- */
+
+.background-colors {
+  flex: 1 1 auto;
+
+  min-height: 0;
+
+  display: grid;
+  grid-template-columns:
+    repeat(6, 1fr);
+
+  gap: 10px;
+
+  margin-top: 14px;
+
+  padding: 4px 2px 20px;
+
+  overflow-y: auto;
+
+  align-content: start;
+}
+
+.background-color {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 1;
+
+  border: 2px solid transparent;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 2px 8px rgba(0,0,0,.10);
+
+  transition: .15s ease;
+}
+
+.background-color.selected {
+  border-color: #292622;
+
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 4px #292622;
+}
+
+.background-color span {
+  position: absolute;
+
+  right: -3px;
+  bottom: -3px;
+
+  width: 18px;
+  height: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #292622;
+  color: #fff;
+
+  font-size: 10px;
+}
+
+.background-empty {
+  grid-column: 1 / -1;
+
+  padding: 30px 10px;
+
+  text-align: center;
+
+  color: #8b8378;
+  font-size: 12px;
+}
+
+
+/* ---------- スマホ ---------- */
+
+@media (max-width: 480px) {
+
+  .background-preview-inner {
+    height: 125px;
+  }
+
+  .background-preview-title {
+    font-size: 25px;
+  }
+
+  .background-styles {
+    gap: 5px;
+  }
+
+  .background-style-button {
+    min-height: 40px;
+    font-size: 10px;
+  }
+
+  .background-colors {
+    grid-template-columns:
+      repeat(5, 1fr);
+
+    gap: 9px;
+  }
+
+}
+  .background-menu-button {
+  margin: 4px auto 0;
+
+  border: 0;
+  background: transparent;
+
+  color: #81796e;
+
+  font-size: 11px;
+
+  cursor: pointer;
+}
+
+.background-menu-button:hover {
+  color: #292622;
+}
   </style>
 </head>
 
@@ -1247,7 +1486,22 @@ const state = {
           "shikisai_discovered"
         ) || "[]"
       )
-    )
+    ),
+
+  backgroundStyle:
+    localStorage.getItem(
+      "shikisai_background_style"
+    ) || "default",
+
+  backgroundColor1:
+    localStorage.getItem(
+      "shikisai_background_color1"
+    ) || null,
+
+  backgroundColor2:
+    localStorage.getItem(
+      "shikisai_background_color2"
+    ) || null
 
 };
 
@@ -1702,6 +1956,89 @@ function saveProgress() {
 
 }
 
+/* =====================================================
+   背景
+   ===================================================== */
+
+function getBackgroundStyle() {
+
+  const color1 =
+    colorById(state.backgroundColor1);
+
+  const color2 =
+    colorById(state.backgroundColor2);
+
+
+  if (
+    state.backgroundStyle === "solid" &&
+    color1
+  ) {
+
+    return color1.hex;
+
+  }
+
+
+  if (
+    state.backgroundStyle === "gradient-white" &&
+    color1
+  ) {
+
+    return `linear-gradient(
+      135deg,
+      ${color1.hex},
+      #ffffff
+    )`;
+
+  }
+
+
+  if (
+    state.backgroundStyle === "gradient-two" &&
+    color1 &&
+    color2
+  ) {
+
+    return `linear-gradient(
+      135deg,
+      ${color1.hex},
+      ${color2.hex}
+    )`;
+
+  }
+
+
+  return "#f7f3ec";
+
+}
+
+
+function applyBackground() {
+
+  document.body.style.background =
+    getBackgroundStyle();
+
+}
+
+
+function saveBackground() {
+
+  localStorage.setItem(
+    "shikisai_background_style",
+    state.backgroundStyle
+  );
+
+  localStorage.setItem(
+    "shikisai_background_color1",
+    state.backgroundColor1 || ""
+  );
+
+  localStorage.setItem(
+    "shikisai_background_color2",
+    state.backgroundColor2 || ""
+  );
+
+}
 
 /* =====================================================
    ホーム
@@ -1866,6 +2203,14 @@ function renderHome() {
             <span class="menu-description">
               見つけた色を知識とする色図鑑。
             </span>
+
+          </button>
+
+          <button
+            class="background-menu-button"
+            onclick="openBackground()">
+
+            背景を選ぶ
 
           </button>
 
@@ -2597,6 +2942,444 @@ function renderRanks() {
 }
 
 /* =====================================================
+   背景設定
+   ===================================================== */
+
+function openBackground() {
+
+  state.screen = "background";
+
+  renderBackground();
+
+}
+
+
+function selectBackgroundStyle(style) {
+
+  state.backgroundStyle = style;
+
+  if (style === "default") {
+
+    state.backgroundColor1 = null;
+    state.backgroundColor2 = null;
+
+  }
+
+  saveBackground();
+  applyBackground();
+  renderBackground();
+
+}
+
+
+function selectBackgroundColor(id) {
+
+  if (
+    !state.discovered.has(id)
+  ) {
+
+    return;
+
+  }
+
+
+  if (
+    state.backgroundStyle === "solid" ||
+    state.backgroundStyle === "gradient-white"
+  ) {
+
+    state.backgroundColor1 = id;
+
+  }
+
+
+  else if (
+    state.backgroundStyle === "gradient-two"
+  ) {
+
+    if (
+      state.backgroundColor1 === id
+    ) {
+
+      state.backgroundColor1 = null;
+
+    }
+
+    else if (
+      state.backgroundColor2 === id
+    ) {
+
+      state.backgroundColor2 = null;
+
+    }
+
+    else if (
+      !state.backgroundColor1
+    ) {
+
+      state.backgroundColor1 = id;
+
+    }
+
+    else if (
+      !state.backgroundColor2
+    ) {
+
+      state.backgroundColor2 = id;
+
+    }
+
+    else {
+
+      // 2色選択済みなら、
+      // 1色目を入れ替える
+      state.backgroundColor1 = id;
+
+    }
+
+  }
+
+
+  saveBackground();
+  applyBackground();
+  renderBackground();
+
+}
+
+
+function renderBackground() {
+
+  const selectedStyle =
+    state.backgroundStyle;
+
+
+  const color1 =
+    colorById(state.backgroundColor1);
+
+  const color2 =
+    colorById(state.backgroundColor2);
+
+
+  let instruction = "";
+
+  if (
+    selectedStyle === "solid"
+  ) {
+
+    instruction =
+      "色を1色選択してください";
+
+  }
+
+  else if (
+    selectedStyle === "gradient-white"
+  ) {
+
+    instruction =
+      "色を1色選択してください";
+
+  }
+
+  else if (
+    selectedStyle === "gradient-two"
+  ) {
+
+    instruction =
+      "色を2色選択してください";
+
+  }
+
+  else {
+
+    instruction =
+      "初期設定の背景です";
+
+  }
+
+
+  const discoveredColors =
+    COLORS.filter(
+      color =>
+        state.discovered.has(color.id)
+    );
+
+
+  document.getElementById("app")
+    .innerHTML = `
+
+      <main class="app background-screen">
+
+        <button
+          class="back-button"
+          onclick="goHome()">
+
+          ← 戻る
+
+        </button>
+
+
+        <div class="screen-header">
+
+          <h2>
+            背景
+          </h2>
+
+          <p>
+            はいけい
+          </p>
+
+        </div>
+
+
+        <!-- プレビュー -->
+
+        <section class="background-preview">
+
+          <div
+            class="background-preview-inner"
+            style="
+              background:
+                ${getBackgroundStyle()};
+            ">
+
+            <div class="background-preview-title">
+              四季彩
+            </div>
+
+            <div class="background-preview-subtitle">
+              色を知り、色を感じる。
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- スタイル -->
+
+        <section class="background-styles">
+
+          <button
+            class="
+              background-style-button
+              ${
+                selectedStyle === "default"
+                  ? "selected"
+                  : ""
+              }
+            "
+            onclick="
+              selectBackgroundStyle('default')
+            ">
+
+            初期設定
+
+          </button>
+
+
+          <button
+            class="
+              background-style-button
+              ${
+                selectedStyle === "solid"
+                  ? "selected"
+                  : ""
+              }
+            "
+            onclick="
+              selectBackgroundStyle('solid')
+            ">
+
+            ベタ塗り
+
+          </button>
+
+
+          <button
+            class="
+              background-style-button
+              ${
+                selectedStyle === "gradient-white"
+                  ? "selected"
+                  : ""
+              }
+            "
+            onclick="
+              selectBackgroundStyle('gradient-white')
+            ">
+
+            白＋色
+
+          </button>
+
+
+          <button
+            class="
+              background-style-button
+              ${
+                selectedStyle === "gradient-two"
+                  ? "selected"
+                  : ""
+              }
+            "
+            onclick="
+              selectBackgroundStyle('gradient-two')
+            ">
+
+            2色
+
+          </button>
+
+        </section>
+
+
+        <div class="background-instruction">
+
+          ${instruction}
+
+        </div>
+
+
+        ${
+          selectedStyle !== "default"
+            ? `
+
+              <div class="background-selected">
+
+                ${
+                  color1
+                    ? `
+                      <span>
+                        ① ${color1.name}
+                      </span>
+                    `
+                    : `
+                      <span>
+                        ① 未選択
+                      </span>
+                    `
+                }
+
+
+                ${
+                  selectedStyle === "gradient-two"
+                    ? (
+                      color2
+                        ? `
+                          <span>
+                            ② ${color2.name}
+                          </span>
+                        `
+                        : `
+                          <span>
+                            ② 未選択
+                          </span>
+                        `
+                    )
+                    : ""
+                }
+
+              </div>
+
+            `
+            : ""
+        }
+
+
+        <!-- 色一覧だけスクロール -->
+
+        <section class="background-colors">
+
+          ${
+            discoveredColors.length > 0
+              ? discoveredColors.map(
+                  color => {
+
+                    const isFirst =
+                      color.id ===
+                      state.backgroundColor1;
+
+                    const isSecond =
+                      color.id ===
+                      state.backgroundColor2;
+
+                    const selected =
+                      isFirst ||
+                      isSecond;
+
+
+                    return `
+
+                      <button
+                        class="
+                          background-color
+                          ${
+                            selected
+                              ? "selected"
+                              : ""
+                          }
+                          ${
+                            isFirst
+                              ? "first"
+                              : ""
+                          }
+                          ${
+                            isSecond
+                              ? "second"
+                              : ""
+                          }
+                        "
+                        onclick="
+                          selectBackgroundColor(
+                            '${color.id}'
+                          )
+                        "
+                        title="
+                          ${color.name}
+                        "
+                        style="
+                          background:
+                            ${color.hex};
+                        ">
+
+                        ${
+                          isFirst
+                            ? `<span>1</span>`
+                            : ""
+                        }
+
+                        ${
+                          isSecond
+                            ? `<span>2</span>`
+                            : ""
+                        }
+
+                      </button>
+
+                    `;
+
+                  }
+                ).join("")
+              : `
+
+                <div class="background-empty">
+
+                  まず知色で色を発見してください。
+
+                </div>
+
+              `
+          }
+
+        </section>
+
+      </main>
+
+    `;
+
+}
+  
+/* =====================================================
    知色
    ===================================================== */
 
@@ -2792,6 +3575,7 @@ function goHome() {
     "home";
 
 
+  applyBackground();
   renderHome();
 
 }
@@ -2801,6 +3585,7 @@ function goHome() {
    起動
    ===================================================== */
 
+applyBackground();
 renderHome();
 
 </script>
